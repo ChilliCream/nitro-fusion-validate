@@ -13,6 +13,8 @@ A GitHub Action that validates GraphQL source schemas against the Nitro registry
     source-schema-files:
       - ./src/SchemaA/schema.graphqls
       - ./src/SchemaB/schema.graphqls
+    # Optional
+    cloud-url: <cloud-url>
 ```
 
 ## Inputs
