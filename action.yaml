@@ -22,7 +22,7 @@ inputs:
   cloud-url:
     description: "The URL of the Nitro registry"
     required: false
-  commentMode:
+  comment-mode:
     description: "Controls pull request feedback on validation failure: comment, review, or none"
     required: false
     default: "none"
