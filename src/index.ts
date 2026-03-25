@@ -10,11 +10,7 @@ async function executeCommand(): Promise<void> {
     const stage = core.getInput("stage", { required: true });
     const apiId = core.getInput("api-id", { required: true });
     const apiKey = core.getInput("api-key", { required: true });
-    const sourceSchemaFiles = core
-      .getInput("source-schema-files", { required: true })
-      .split("\n")
-      .map((f) => f.trim())
-      .filter((f) => f.length > 0);
+    const sourceSchemaFiles = core.getMultilineInput("source-schema-files", { required: true });
     const cloudUrl = core.getInput("cloud-url") || null;
 
     const args: string[] = [
