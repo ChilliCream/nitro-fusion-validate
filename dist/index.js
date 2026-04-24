@@ -39943,6 +39943,7 @@ async function executeCommand() {
         const sourceSchemaFiles = getMultilineInput("source-schema-files", {
             required: true,
         });
+        const legacyV1Archive = getInput("legacy-v1-archive") || null;
         const cloudUrl = getInput("cloud-url") || null;
         const args = [
             "fusion",
@@ -39954,6 +39955,9 @@ async function executeCommand() {
         ];
         for (const file of sourceSchemaFiles) {
             args.push("--source-schema-file", file);
+        }
+        if (legacyV1Archive) {
+            args.push("--legacy-v1-archive", legacyV1Archive);
         }
         if (cloudUrl) {
             args.push("--cloud-url", cloudUrl);

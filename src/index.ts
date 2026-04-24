@@ -13,6 +13,7 @@ async function executeCommand(): Promise<void> {
     const sourceSchemaFiles = core.getMultilineInput("source-schema-files", {
       required: true,
     });
+    const legacyV1Archive = core.getInput("legacy-v1-archive") || null;
     const cloudUrl = core.getInput("cloud-url") || null;
 
     const args: string[] = [
@@ -26,6 +27,10 @@ async function executeCommand(): Promise<void> {
 
     for (const file of sourceSchemaFiles) {
       args.push("--source-schema-file", file);
+    }
+
+    if (legacyV1Archive) {
+      args.push("--legacy-v1-archive", legacyV1Archive);
     }
 
     if (cloudUrl) {

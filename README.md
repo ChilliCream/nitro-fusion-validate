@@ -15,6 +15,7 @@ A GitHub Action that validates GraphQL source schemas against the Nitro registry
       - ./src/SchemaB/schema.graphqls
     # Optional
     comment-mode: none
+    legacy-v1-archive: ./path/to/fusion-v1.fgp
     cloud-url: <cloud-url>
 ```
 
@@ -26,7 +27,8 @@ A GitHub Action that validates GraphQL source schemas against the Nitro registry
 | `api-id`              | Yes      | The ID of the API                                                               |
 | `api-key`             | Yes      | API key for authentication                                                      |
 | `source-schema-files` | Yes      | Paths to source schema files                                                    |
-| `comment-mode`         | No       | Pull request feedback mode on failure: `comment`, `review`, or `none` (default) |
+| `comment-mode`        | No       | Pull request feedback mode on failure: `comment`, `review`, or `none` (default) |
+| `legacy-v1-archive`   | No       | The path to a Fusion v1 archive file.                                           |
 | `cloud-url`           | No       | The URL of the Nitro registry                                                   |
 
 If you self-host Nitro or use a dedicated hosted instance, you can specify the `cloud-url` input to point to your instance.

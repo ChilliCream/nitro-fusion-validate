@@ -19,6 +19,9 @@ inputs:
   source-schema-files:
     description: "Paths to source schema files (.graphqls) or directories containing source schema files"
     required: true
+  legacy-v1-archive:
+    description: "The path to a Fusion v1 archive file."
+    required: false
   cloud-url:
     description: "The URL of the Nitro registry"
     required: false
