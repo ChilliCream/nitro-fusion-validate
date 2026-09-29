@@ -1,6 +1,9 @@
 import * as core from "@actions/core";
 import * as exec from "@actions/exec";
-import { installNitro } from "@chillicream/nitro-github-actions";
+import {
+  installNitro,
+  getSourceMetadata,
+} from "@chillicream/nitro-github-actions";
 import pkg from "../package.json" with { type: "json" };
 
 const nitroVersion: string = pkg.version;
@@ -10,6 +13,8 @@ async function executeCommand(): Promise<void> {
     const stage = core.getInput("stage", { required: true });
     const apiId = core.getInput("api-id", { required: true });
     const apiKey = core.getInput("api-key", { required: true });
+    const jobId = core.getInput("job-id") || undefined;
+    const sourceMetadata = JSON.stringify(getSourceMetadata(jobId));
     const sourceSchemaFiles = core.getMultilineInput("source-schema-files", {
       required: true,
     });
@@ -23,6 +28,8 @@ async function executeCommand(): Promise<void> {
       stage,
       "--api-id",
       apiId,
+      "--source-metadata",
+      sourceMetadata,
     ];
 
     for (const file of sourceSchemaFiles) {
